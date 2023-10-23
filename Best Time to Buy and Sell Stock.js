@@ -23,18 +23,20 @@
  * @return {number}
  */
 var maxProfit = function (prices) {
-  let minProfit = prices[0];
-  let maxProfit = 0;
+  let min = prices[0];
+  let max = 0;
 
-  for (let i = 1; i < prices.length; i++) {
-    if (prices[i] < minProfit) {
-      minProfit = prices[i];
+  for (let i = 0; i < prices.length; i++) {
+    const n = prices[i];
+
+    if (n < min) {
+      min = n;
     } else {
-      maxProfit = Math.max(maxProfit, prices[i] - minProfit);
+      max = Math.max(max, prices[i] - min);
     }
   }
 
-  return maxProfit;
+  return max;
 };
 
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
