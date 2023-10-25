@@ -22,15 +22,17 @@
  * @param {number[]} prices
  * @return {number}
  */
+
+/////
+// PREP: We need to find
+
 var maxProfit = function (prices) {
   let min = prices[0];
   let max = 0;
 
-  for (let i = 0; i < prices.length; i++) {
-    const n = prices[i];
-
-    if (n < min) {
-      min = n;
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < min) {
+      min = prices[i];
     } else {
       max = Math.max(max, prices[i] - min);
     }
@@ -39,7 +41,5 @@ var maxProfit = function (prices) {
   return max;
 };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
-console.log(maxProfit([7, 6, 4, 3, 1]));
-console.log(maxProfit([2, 4, 1]));
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
+console.log(maxProfit([7, 6, 4, 3, 2, 1])); // 0
