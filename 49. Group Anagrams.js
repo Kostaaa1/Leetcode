@@ -27,13 +27,26 @@
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function (strs) {};
+
+var groupAnagrams = function (strs) {
+  const map = {};
+
+  for (const s of strs) {
+    const sorttedWrd = s.split("").sort().join("");
+
+    if (map[sorttedWrd]) {
+      map[sorttedWrd].push(s);
+    } else {
+      map[sorttedWrd] = [s];
+    }
+  }
+
+  return Object.values(map);
+};
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
 // [["bat"],["nat","tan"],["ate","eat","tea"]]
-
 console.log(groupAnagrams([""]));
 // [[""]]
-
 console.log(groupAnagrams(["a"]));
 // [["a"]]
