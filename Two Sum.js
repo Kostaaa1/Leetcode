@@ -35,14 +35,15 @@
 
 var twoSum = function (nums, target) {
   const map = {};
-
   for (let i = 0; i < nums.length; i++) {
-    const comp = target - nums[i];
+    const c = target - nums[i];
 
-    if (map[comp] !== undefined) {
-      return [map[comp], i];
+    if (map[c] !== undefined) {
+      return [map[c], i];
     }
 
     map[nums[i]] = i;
   }
 };
+
+console.log(twoSum([2, 7, 11, 15], 9));
