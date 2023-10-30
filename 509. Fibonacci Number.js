@@ -2,7 +2,7 @@
 
 // F(0) = 0, F(1) = 1
 // F(n) = F(n - 1) + F(n - 2), for n > 1.
-// Given n, calculate F(n).
+// Given n, calculate F(n)`
 
 // Example 1:
 
@@ -30,7 +30,3 @@ var fib = function (n) {
   if (n <= 1) return n;
   return fib(n - 2) + fib(n - 1);
 };
-
-console.log(fib(2));
-console.log(fib(3));
-console.log(fib(4));
