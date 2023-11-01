@@ -28,11 +28,11 @@
  * @return {number}
  */
 var singleNumber = function (nums) {
-  const map = {};
+  //   const map = {};
+  //   for (const n of nums) {
+  //     map[n] = (map[n] || 0) + 1;
+  //   }
+  //   return Object.keys(map)[0];
 
-  for (const n of nums) {
-    map[n] = (map[n] || 0) + 1;
-  }
-
-  return Object.keys(map)[0];
+  return nums.reduce((x, y) => x ^ y);
 };
