@@ -26,17 +26,24 @@
  * @return {number}
  */
 
+/* 
+  Idea: 
+  
+  Idea is that we iterate trought every element in array, and keep track of current maximum and new maximum, but since we are searching for largest product, we need to keep track of minimums as well, since negative numbers affect the product.   
+*/
+
 var maxProduct = function (nums) {
-  let min = nums[0];
   let max = nums[0];
+  let min = nums[0];
   let product = nums[0];
 
   for (let i = 1; i < nums.length; i++) {
     const n = nums[i];
-    const temp = min * n;
 
-    min = Math.min(n, min * n, max * n);
-    max = Math.max(n, temp, max * n);
+    const temp = n * max;
+
+    max = Math.max(n, max * n, min * n);
+    min = Math.min(n, temp, min * n);
 
     product = Math.max(max, product);
   }
