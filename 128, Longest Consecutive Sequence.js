@@ -26,6 +26,10 @@
 
 // DEFINITIVNO NE KONTAM !!!!!!!
 
+/*
+  IDEA: 
+*/
+
 var longestConsecutive = function (nums) {
   if (nums.length === 0) return 0;
 
