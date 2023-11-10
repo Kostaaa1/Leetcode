@@ -48,23 +48,29 @@ function isValidSudoku(board) {
     const gridSet = new Set();
 
     for (let j = 0; j < 9; j++) {
-      const colVal = board[j][i];
       const rowVal = board[i][j];
+      const colVal = board[j][i];
       const gridVal =
         board[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + (j % 3)];
 
-      if (colVal !== ".") {
-        if (colSet.has(colVal)) return false;
-        colSet.add(colVal);
-      }
-
       if (rowVal !== ".") {
-        if (rowSet.has(rowVal)) return false;
+        if (rowSet.has(rowVal)) {
+          return false;
+        }
         rowSet.add(rowVal);
       }
 
+      if (colVal !== ".") {
+        if (colSet.has(colVal)) {
+          return false;
+        }
+        colSet.add(colVal);
+      }
+
       if (gridVal !== ".") {
-        if (gridSet.has(gridVal)) return false;
+        if (gridSet.has(gridVal)) {
+          return false;
+        }
         gridSet.add(gridVal);
       }
     }
@@ -72,3 +78,31 @@ function isValidSudoku(board) {
 
   return true;
 }
+
+console.log(
+  isValidSudoku([
+    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+  ])
+);
+
+console.log(
+  isValidSudoku([
+    ["9", "", "6", "3", "", "5", "", "", "1"],
+    ["", "5", "", "", "2", "6", "", "", "9"],
+    ["", "", "3", "", "", "1", "", "5", ""],
+    ["6", "", "", "4", "7", "9", "", "", ""],
+    ["7", "", "", "1", "", "2", "", "", ""],
+    ["", "", "9", "5", "", "8", "7", "6", ""],
+    ["", "", "", "", "", "3", "", "2", "7"],
+    ["", "4", "", "", "", "", "9", "1", "5"],
+    ["", "9", "7", "2", "5", "4", "6", "8", ""],
+  ])
+);
