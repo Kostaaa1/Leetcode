@@ -28,23 +28,25 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  const n = nums.length;
-  const result = new Array(n);
+  // O(n^2)
+  // return nums.map((x, _, arr) =>
+  //   arr.reduce((acc, y) => (acc *= y !== x ? y : 1), 1)
+  // );
 
+  // o(n)
+  const result = new Array(nums.length);
   let leftProduct = 1;
-  for (let i = 0; i < n; i++) {
+  let rightProduct = 1;
+
+  for (let i = 0; i < nums.length; i++) {
     result[i] = leftProduct;
     leftProduct *= nums[i];
-    leftProduct;
   }
 
-  let rightProduct = 1;
-  for (let i = n - 1; i >= 0; i--) {
+  for (let i = nums.length - 1; i >= 0; i--) {
     result[i] *= rightProduct;
     rightProduct *= nums[i];
   }
 
   return result;
 };
-
-console.log(productExceptSelf([1, 2, 3, 4]));
